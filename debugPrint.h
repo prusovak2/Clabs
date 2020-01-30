@@ -28,11 +28,9 @@
             printf (toPrint);\
             printf (COLOR_RESET);\
         } while (0)
-# define DEBUG_PRINT_SDERR(toPrint...)\
+# define DEBUG_PRINT_STDERR(toPrint...)\
         do {\
-            fprintf (COLOR_RED);\
             fprintf (stderr, toPrint);\
-            fprintf (COLOR_RESET);\
         } while (0)
 
 #else

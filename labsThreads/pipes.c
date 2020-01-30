@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <err.h>
+//#include "debugPrint.h"
 
 #define WRITE_END 1
 #define READ_END 0
@@ -13,6 +14,8 @@
 int main(int argc, char const *argv[])
 {
     int test =0;
+
+
 
     printf("pipes.c main entered\n");
     pid_t pids[10];
@@ -79,7 +82,7 @@ for (int i = 0; i < 10; i++)
             if(i==0)            
             {
                 fprintf(stderr,"executing echo\n");
-                execlp("/bin/echo", "/bin/echo praise the sun!", NULL);
+                execlp("/bin/echo", "/bin/echo" ,"praise the sun!", NULL);
                 fprintf(stderr,"echo failed\n");
             }
             
@@ -113,8 +116,8 @@ for (int i = 0; i < 10; i++)
     {
         fprintf(stderr, "P: waiting for child %d\n", i);
         int status;
-        waitpid(pids[i],&status,NULL);
-       /* while(0 == waitpid(pids[i] , &status , WNOHANG))
+        waitpid(pids[i],&status,0);
+        /*while(0 == waitpid(pids[i] , &status , WNOHANG))
         {             
             sleep(1);
             printf("P: waitpid %d\n",i);
